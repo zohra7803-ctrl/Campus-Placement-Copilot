@@ -1,0 +1,311 @@
+{
+  "name": "Campus Placement Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e021a62f-002a-4378-8d24-70358a4aea34",
+      "name": "When chat message received",
+      "webhookId": "a20cac10-de88-4281-929a-c080339a449a"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are Campus Placement Copilot, a helpful placement assistant for MBA students.\n\nYou have 2 tools:\n1.⁠ ⁠Get Row(s) from Placement FAQs - USE THIS FIRST for any placement question. Always check the sheet for the answer. Never guess. If answer is in sheet, reply exactly from sheet.\n2.⁠ ⁠Append Row in Student Database - USE THIS ONLY when student wants to register. Ask for Name, Email, Specialization, Graduation Percentage, MBA CGPA one by one, then save.\n\nRules:\n•⁠  ⁠If user asks about eligibility, companies, package, process, deadlines - first use FAQ tool.\n•⁠  ⁠If user says \"register me\" / \"I want to join\" - collect details and save.\n•⁠  ⁠Be friendly, short, and clear. Use simple English.\n•⁠  ⁠If answer not in FAQ sheet, say \"I don't have this info, please contact placement cell.\""
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "4fbca5e7-922d-458b-a94b-02e9bfa30ac9",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        208
+      ],
+      "id": "31563fdd-ebe6-47f6-8ca9-d3bf709c152c",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": null,
+          "name": "",
+          "__aiGatewayManaged": true
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU",
+          "mode": "list",
+          "cachedResultName": "Campus Placement Copilot – Master Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Student Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Student_ID",
+              "displayName": "Student_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Student_Name",
+              "displayName": "Student_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Specialization",
+              "displayName": "Specialization",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Graduation_Percentage",
+              "displayName": "Graduation_Percentage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "MBA_CGPA",
+              "displayName": "MBA_CGPA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Backlogs",
+              "displayName": "Backlogs",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Skills",
+              "displayName": "Skills",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Certifications",
+              "displayName": "Certifications",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Experience",
+              "displayName": "Experience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI Score",
+              "displayName": "AI Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Eligibility Status",
+              "displayName": "Eligibility Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI Reason",
+              "displayName": "AI Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        384,
+        208
+      ],
+      "id": "6ba132c7-46e5-45a5-a677-1d073bffd6b2",
+      "name": "Append row in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BWwpNt27nTRKold8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU",
+          "mode": "list",
+          "cachedResultName": "Campus Placement Copilot – Master Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1502766648,
+          "mode": "list",
+          "cachedResultName": "Placement FAQs",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit#gid=1502766648"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        480,
+        304
+      ],
+      "id": "fec5e8cb-8d29-4e97-872b-8eff6c1555fa",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BWwpNt27nTRKold8",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "dccb067a-8b76-4f87-b331-961a194f96e0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "df74b9c49f107edeb760aa1bf9e75078d64751fd5046631576d04f30892b90eb"
+  },
+  "nodeGroups": [],
+  "id": "sA6yDoRI5EOj87AZ",
+  "tags": []
+}

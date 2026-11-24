@@ -1,0 +1,273 @@
+{
+  "name": "Campus Placement - Registration Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1yy8-yMkRdTp8TqMpgFXnwWiqK9scrtMP_WEDYvMbgv0",
+          "mode": "list",
+          "cachedResultName": "Campus Copilot (Responses)",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yy8-yMkRdTp8TqMpgFXnwWiqK9scrtMP_WEDYvMbgv0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1590003511,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1yy8-yMkRdTp8TqMpgFXnwWiqK9scrtMP_WEDYvMbgv0/edit#gid=1590003511"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "5276fe86-0967-4786-b6cd-5f3c6160e417",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "3KpyuH6StoHYZWU5",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU",
+          "mode": "list",
+          "cachedResultName": "Campus Placement Copilot – Master Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Student Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1iS-MqFkP-YFZHPpTxtXbdyPx3MOXS60lY7k5Qu3FjvU/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Student_ID": "={{ $json['Student ID'] }}",
+            "Student_Name": "={{ $json['Student Name'] }}",
+            "Specialization": "={{ $json.Specialization }}",
+            "Graduation_Percentage": "={{ $json['Graduation Percentage'] }}",
+            "MBA_CGPA": "={{ $json['MBA - CGPA'] }}",
+            "Backlogs": "={{ $json['Number of Active Backlogs '] }}",
+            "Skills": "={{ $json['Skills '] }}",
+            "Certifications": "={{ $json.Certifications }}",
+            "Experience": "={{ $json['Internship or Work Experience '] }}",
+            "AI Score": "={{ $json['AI Score'] }}",
+            "Eligibility Status": "={{ $json['Eligibility Status'] }}",
+            "AI Reason": "={{ $json['AI Reason'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Student_ID",
+              "displayName": "Student_ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Student_Name",
+              "displayName": "Student_Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Specialization",
+              "displayName": "Specialization",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Graduation_Percentage",
+              "displayName": "Graduation_Percentage",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "MBA_CGPA",
+              "displayName": "MBA_CGPA",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Backlogs",
+              "displayName": "Backlogs",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Skills",
+              "displayName": "Skills",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Certifications",
+              "displayName": "Certifications",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Experience",
+              "displayName": "Experience",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI Score",
+              "displayName": "AI Score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Eligibility Status",
+              "displayName": "Eligibility Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "AI Reason",
+              "displayName": "AI Reason",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        448,
+        0
+      ],
+      "id": "3eac8f2b-af25-4dea-b714-9dfa2c185209",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "BWwpNt27nTRKold8",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get form data\nconst input = $input.first().json;\nconst data = input.body || input.data || input;\n\n// Find field by name\nfunction getField(...names) {\n  for (const key of Object.keys(data)) {\n    const lowerKey = key.toLowerCase();\n    for (const n of names) {\n      if (lowerKey.includes(n.toLowerCase())) return data[key];\n    }\n  }\n  return \"\";\n}\n\nconst cgpa = parseFloat(getField(\"cgpa\", \"current cgpa\")) || 0;\nconst backlogs = parseInt(getField(\"backlog\")) || 0;\nconst gradPercent = parseFloat(getField(\"graduation percentage\", \"percentage\")) || 0;\nconst skills = String(getField(\"skills\") || \"\");\nconst internship = String(getField(\"internship\") || \"\");\n\n// AI Logic - Calculate Score\nlet score = 0;\nscore += cgpa * 8;\nif (gradPercent >= 75) score += 10;\nelse if (gradPercent >= 60) score += 5;\nif (skills.length > 10) score += 5;\nif (internship.toLowerCase().includes(\"yes\") || internship.length > 5) score += 5;\nif (backlogs > 0) score -= (backlogs * 5);\nif (score > 100) score = 100;\nif (score < 0) score = 0;\nscore = Math.round(score);\n\nlet eligibility = \"Not Eligible\";\nlet reason = \"\";\n\nif (cgpa >= 6.5 && backlogs <= 1 && gradPercent >= 60) {\n  eligibility = \"Eligible\";\n  reason = \"Eligible: CGPA \" + cgpa + \", Backlogs \" + backlogs + \", Graduation \" + gradPercent + \"% meets criteria.\";\n} else {\n  reason = \"Not Eligible: CGPA \" + cgpa + \", Backlogs \" + backlogs + \", Graduation \" + gradPercent + \"% does not meet criteria (Need CGPA >=6.5, Backlogs <=1, Graduation >=60%).\";\n}\n\nreturn [{\n  json: {\n    ...data,\n    \"AI Score\": score,\n    \"Eligibility Status\": eligibility,\n    \"AI Reason\": reason\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "0243c3b3-848a-4b37-934b-8bbe67fa61a0",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "92245797-a5b2-4c79-9683-cc68f21640be",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "df74b9c49f107edeb760aa1bf9e75078d64751fd5046631576d04f30892b90eb"
+  },
+  "nodeGroups": [],
+  "id": "Xy0jAdzpxsWu6ouR",
+  "tags": []
+}
